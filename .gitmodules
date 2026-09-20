@@ -1,0 +1,6 @@
+[submodule "FASTSTREAM__folder_1_backend"]
+	path = FASTSTREAM__folder_1_backend
+	url = https://github.com/TkachukStanislav/FASTSTREAM__folder_1_backend.git
+[submodule "FASTSTREAM_folder_2_bot"]
+	path = FASTSTREAM_folder_2_bot
+	url = https://github.com/TkachukStanislav/FASTSTREAM_folder_2_bot.git
