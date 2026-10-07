@@ -1,29 +1,28 @@
 # FastStream Microservices System
 
-Асинхронна мікросервісна система через брокер повідомлень RabbitMQ.
+Asynchronous event-driven microservices architecture built with RabbitMQ message broker.
 
-## 🛠 Стек технологій
-* **Python 3.12**
-* **FastAPI** — прийом HTTP-запитів
-* **FastStream** — асинхронна робота з чергами повідомлень
-* **RabbitMQ** — брокер повідомлень (Producer / Consumer патерн)
-* **Aiogram 3** — надсилання сповіщень через Telegram-бота
-* **Docker & Docker Compose** — контейнеризація брокера
+## 🛠 Tech Stack
 
----
+- **Python 3.12**
+- **FastAPI** — Handling incoming HTTP requests & Producer service
+- **FastStream** — Asynchronous message broker integration & stream processing
+- **RabbitMQ** — Distributed message broker (Producer / Consumer pattern)
+- **Aiogram 3** — Delivering alerts and updates via Telegram bot
+- **Docker & Docker Compose** — Broker and service containerization
 
-## Архітектура
+## Architecture
 
 ```text
 [ Client / Web ]
-       │  (POST /order)
+       │ (POST /order)
        ▼
 [ FastAPI (Producer) ]
        │
-       ▼  (FastStream)
+       ▼ (FastStream)
 [ RabbitMQ Queue ("order") ]
        │
-       ▼  (FastStream)
+       ▼ (FastStream)
 [ Telegram Bot (Consumer) ]
        │
        ▼
