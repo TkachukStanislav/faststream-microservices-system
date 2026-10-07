@@ -1,19 +1,30 @@
-## 📦 Services Breakdown
+```markdown
+# FastStream Microservices System
 
-- **Order Producer Service (`order-service`)**:
-  - Exposes REST API endpoints via **FastAPI**.
-  - Handles incoming client requests, payload validation via Pydantic, and publishes event messages to the RabbitMQ exchange.
-- **Notification Consumer Service (`bot-service`)**:
-  - Listens to RabbitMQ queues using **FastStream**.
-  - Consumes order events asynchronously and dispatches real-time Telegram alerts via **Aiogram 3**.
-- **Message Broker (`RabbitMQ`)**:
-  - Decouples services, handles routing keys, and manages retry/DLQ logic.
+Asynchronous event-driven microservices architecture built with RabbitMQ message broker.
 
-## 🚀 How to Run Locally
+## 🛠 Tech Stack
 
-```bash
-# Clone repository with submodules
-git clone --recurse-submodules [https://github.com/TkachukStanislav/faststream-microservices-system.git](https://github.com/TkachukStanislav/faststream-microservices-system.git)
+- **Python 3.12**
+- **FastAPI** — Handling incoming HTTP requests & Producer service
+- **FastStream** — Asynchronous message broker integration & stream processing
+- **RabbitMQ** — Distributed message broker (Producer / Consumer pattern)
+- **Aiogram 3** — Delivering alerts and updates via Telegram bot
+- **Docker & Docker Compose** — Broker and service containerization
 
-# Start the entire infrastructure via Docker Compose
-docker compose up -d --build
+## 📐 Architecture
+
+```text
+[ Client / Web ]
+       │ (POST /order)
+       ▼
+[ FastAPI (Producer) ]
+       │
+       ▼ (FastStream)
+[ RabbitMQ Queue ("order") ]
+       │
+       ▼ (FastStream)
+[ Telegram Bot (Consumer) ]
+       │
+       ▼
+[ Telegram User Notification ]
