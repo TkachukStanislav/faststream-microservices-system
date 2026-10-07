@@ -1,4 +1,3 @@
-```markdown
 # FastStream Microservices System
 
 Asynchronous event-driven microservices architecture built with RabbitMQ message broker.
